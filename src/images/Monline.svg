@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>phone_icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="37.7263158" height="63.8194728" rx="7.89999962"></rect>
+    </defs>
+    <g id="Cleaning" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-688.000000, -795.000000)">
+        <g id="phone-icon" transform="translate(688.000000, 795.000000)">
+            <g transform="translate(13.090909, 0.000000)">
+                <g id="hp-downloadApp">
+                    <g id="phone">
+                        <g id="Rectangle-133-+-Rectangle-133-Copy-2">
+                            <mask id="mask-2" fill="white">
+                                <use xlink:href="#path-1"></use>
+                            </mask>
+                            <use id="Mask" fill="#00CDED" xlink:href="#path-1"></use>
+                            <rect id="Rectangle-133-Copy" fill="#EDF5F8" mask="url(#mask-2)" x="3.60442508" y="4.38245307" width="30.7577606" height="50.3982103" rx="3.94999981"></rect>
+                            <rect id="Rectangle-133-Copy-2" fill="#FFFFFF" opacity="0.3" mask="url(#mask-2)" x="-18.8631579" y="0" width="37.7263158" height="63.8194728"></rect>
+                        </g>
+                        <rect id="Rectangle-135" fill="#FFFFFF" x="10.8132752" y="57.7935998" width="16.0997653" height="2.46512985" rx="1.23256493"></rect>
+                    </g>
+                </g>
+                <circle id="Oval-12" fill="#FFFFFF" cx="18.8631579" cy="29.6421053" r="11.4526316"></circle>
+                <path d="M14.4842105,30.6526316 L18.20241,34.3708311" id="Line" stroke="#8BC653" stroke-width="3" stroke-linecap="round"></path>
+                <path d="M25.9497893,26.6234519 L18.20241,34.3708311" id="Line" stroke="#8BC653" stroke-width="3" stroke-linecap="round"></path>
+            </g>
+        </g>
+    </g>
+</svg>
