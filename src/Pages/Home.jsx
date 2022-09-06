@@ -2,13 +2,22 @@ import React from "react";
 import worker from "../images/worker.png";
 import Services from "../Components/Services.jsx";
 import Work from "../Components/Work.jsx";
+import axios from "axios";
+import { useState, useEffect } from "react";
+// import { Link } from "react-router-dom";
 
 import Parteners from "../Components/Parteners";
 import Footer from "../Components/Footer";
 
-import { Link } from "react-router-dom";
-
 const Home = () => {
+  const [service, setService] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/service")
+      .then((res) => setService(res.data.services));
+  }, []);
+  // console.log(service);
   return (
     <div className="h-screen w-screen">
       <div
@@ -65,9 +74,9 @@ const Home = () => {
           <h1 className=" font-bold text-1xl">Our Services </h1>
         </div>
         <div className="flex p-8  items-center  ">
-          <Services />
-          <Services />
-          <Services />
+          {service.map((service) => (
+            <Services service={service} />
+          ))}
         </div>
       </div>
       {/* Parteners */}
