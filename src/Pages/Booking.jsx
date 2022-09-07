@@ -14,9 +14,9 @@ const Booking = () => {
 
   useEffect(() => {
     axios.get(`http://localhost:8080/service/${id}`).then((res) => {
-      setItem(res.data.Service);
+      // console.log(res.data.Service);
+      setInput({ ...input, service: res.data.Service._id });
     });
-    setInput({ ...input, service: item._id });
     // console.log(item);
   }, []);
 

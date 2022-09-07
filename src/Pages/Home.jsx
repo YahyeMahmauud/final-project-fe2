@@ -18,6 +18,11 @@ const Home = () => {
       .then((res) => setService(res.data.services));
   }, []);
   // console.log(service);
+
+  if (!service) {
+    return <h1>Loading ...</h1>;
+  }
+
   return (
     <div className="h-screen w-screen">
       <div
@@ -45,7 +50,7 @@ const Home = () => {
 
           {/* button */}
           <div className=" flex gap-16">
-            <button
+            {/* <button
               type="button"
               className=" p-2 border-2 border-blue-500 text-xl font-medium rounded-md  hover:bg-blue-500"
             >
@@ -57,7 +62,7 @@ const Home = () => {
               className="p-3  bg-blue-500 text-xl font-medium rounded-md hover:bg-white border-2 border-white  "
             >
               How we work
-            </button>
+            </button> */}
           </div>
         </div>
 
@@ -71,7 +76,10 @@ const Home = () => {
 
       <div>
         <div className="flex items-center justify-center p-2 mt-2">
-          <h1 className=" font-bold text-1xl">Our Services </h1>
+          <h1 className="font-bold text-3xl ">
+            Services
+            <br />
+          </h1>
         </div>
         <div className="flex p-8  items-center  ">
           {service.map((service) => (

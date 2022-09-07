@@ -38,7 +38,7 @@ const Signup = () => {
               onChange={(e) => setInput({ ...input, name: e.target.value })}
               type="text"
               placeholder="FullName"
-              class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600  dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+              class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md "
             />
             {/*  */}
             {/* phone number */}
@@ -51,7 +51,7 @@ const Signup = () => {
               name="phone"
               required
               placeholder="Phone Number"
-              class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600  dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40 appearance-none"
+              class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md"
             />
             {/* skill*/}
             <select
@@ -60,7 +60,7 @@ const Signup = () => {
               }
               type="text"
               placeholder="Select a service"
-              class="block w-full px-4 py-2 mt-2 text-gray-400 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600  dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+              class="block w-full px-4 py-2 mt-2 text-gray-400 placeholder-gray-400 bg-white border border-gray-200 rounded-md "
             >
               <option>Select a service</option>
               <option value={"electrical"}>electrical</option>
@@ -72,7 +72,7 @@ const Signup = () => {
               onChange={(e) => setInput({ ...input, password: e.target.value })}
               type="password"
               placeholder="Password"
-              class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600  dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+              class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md "
             />
           </div>
           <div class="text-center mt-6">

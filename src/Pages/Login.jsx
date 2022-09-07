@@ -35,24 +35,28 @@ const Login = () => {
           <div class="space-y-4">
             {/* phone number */}
             <input
-            onChange={(e)=>setInput({ ...input, phoneNumber: e.target.value })}
+              onChange={(e) =>
+                setInput({ ...input, phoneNumber: e.target.value })
+              }
               type="number"
               placeholder="Phone Number"
-              class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+              class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md "
             />
             {/* skill*/}
 
             {/* password */}
             <input
-                        onChange={(e)=>setInput({ ...input, password: e.target.value })}
-
+              onChange={(e) => setInput({ ...input, password: e.target.value })}
               type="password"
               placeholder="Password"
-              class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+              class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md "
             />
           </div>
           <div class="text-center mt-6">
-            <button class="py-3 w-64 text-xl text-white bg-black rounded-2xl" onClick={handleOnLogin}>
+            <button
+              class="py-3 w-64 text-xl text-white bg-black rounded-2xl"
+              onClick={handleOnLogin}
+            >
               Login
             </button>
             <p class="mt-4 text-sm">
