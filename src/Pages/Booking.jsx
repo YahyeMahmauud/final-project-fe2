@@ -1,47 +1,84 @@
 import React from "react";
+import axios from "axios";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 
 import TextField from "@mui/material/TextField";
 const Booking = () => {
+  const [input, setInput] = useState({});
+  const [item, setItem] = useState({});
+  const baseUrl = "http://localhost:8080";
+  const navigate = useNavigate();
+  const { id } = useParams();
+
+  useEffect(() => {
+    axios.get(`http://localhost:8080/service/${id}`).then((res) => {
+      // console.log(res.data.Service);
+      setInput({ ...input, service: res.data.Service._id });
+    });
+    // console.log(item);
+  }, []);
+
+  const handleOnBooking = async (id) => {
+    try {
+      const res = await axios.post(`${baseUrl}/booking/${id}`, input);
+      toast.success(res.data.message);
+      navigate("/");
+    } catch (e) {
+      toast.error(e.response.data.message);
+    }
+  };
+
   return (
     <>
       <div class="min-h-screen bg-blue-300 flex justify-center items-center">
         <div class="py-12 px-[200px] bg-white rounded-2xl shadow-xl z-20">
           <div className="flex flex-col items-center">
             <h1 class="text-3xl font-bold text-center mb-4 cursor-pointer">
-              Cleaning
+              {item.name}
             </h1>
             <p class="w-80 text-center text-sm mb-8 font-semibold text-gray-700 tracking-wide cursor-pointer">
-              book an handyman to enjoy all the services without any delay!
+              Book a {item.name} specialist to enjoy all the services without
+              any delay!
             </p>
           </div>
           <div class=" flex gap-4 items-center">
             <div>
               <input
+                onChange={(e) => setInput({ ...input, name: e.target.value })}
                 type="text"
                 placeholder="Name"
-                class="block w-full px-4 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                class="block w-full px-4 py-3 mt-2 text-black placeholder-gray-400 bg-white border border-gray-200 rounded-md "
               />
               {/*  */}
               <input
-                type="text"
+                onChange={(e) =>
+                  setInput({ ...input, phoneNumber: e.target.value })
+                }
+                type="number"
                 placeholder="Phone Number"
-                class="block w-full px-4 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                class="block w-full px-4 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md"
               />
             </div>
 
             <div>
               <input
+                onChange={(e) =>
+                  setInput({ ...input, address: e.target.value })
+                }
                 type="text"
                 placeholder="Address"
-                class="block w-full px-4 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                class="block w-full px-4 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md"
               />
               {/*  */}
 
               <TextField
-                class="block w-full px-4 py-1 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                onChange={(e) => setInput({ ...input, date: e.target.value })}
+                class="block w-full px-4 py-1 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md"
                 id="datetime-local"
                 type="datetime-local"
-                defaultValue="2017-05-24T10:30"
+                defaultValue={Date.now()}
                 sx={{ width: 250 }}
                 InputLabelProps={{
                   shrink: true,
@@ -50,8 +87,11 @@ const Booking = () => {
             </div>
           </div>
           <div class="text-center mt-6">
-            <button class="py-3 w-64 text-xl text-white bg-black rounded-2xl">
-              Appoint
+            <button
+              onClick={() => handleOnBooking(item._id)}
+              class="py-3 w-64 text-xl text-white bg-black rounded-2xl"
+            >
+              Book
             </button>
           </div>
         </div>
