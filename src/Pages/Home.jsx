@@ -87,13 +87,13 @@ const Home = () => {
           ))}
         </div>
       </div>
-      {/* Parteners */}
-      <div>
-        <Parteners />
-      </div>
       {/* Work */}
       <div>
         <Work />
+      </div>
+      {/* Parteners */}
+      <div>
+        <Parteners />
       </div>
       <div>
         <Footer />

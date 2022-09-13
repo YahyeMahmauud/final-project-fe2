@@ -10,7 +10,10 @@ const Parteners = () => {
     <div className="flex flex-col items-center space-y-5 bg-[#dedde2] p-3">
       {/* Our Parteners */}
       <div>
-        <h1 className=" font-bold text-1xl">Our Parteners </h1>
+        <h1 className="font-bold text-3xl ">
+          Partners
+          <br />
+        </h1>
       </div>
       {/* some text */}
       <div>
