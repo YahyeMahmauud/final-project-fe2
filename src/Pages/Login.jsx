@@ -1,10 +1,12 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { userContext } from "../Utils/userContext";
 import { toast } from "react-toastify";
 
 const Login = () => {
+  const { setUser } = useContext(userContext);
   const [input, setInput] = useState({});
   const baseUrl = "http://localhost:8080";
   const navigate = useNavigate();
@@ -12,9 +14,10 @@ const Login = () => {
   const handleOnLogin = async () => {
     try {
       const res = await axios.post(`${baseUrl}/specialist/login`, input);
+      setUser(true);
       localStorage.setItem("token", res.data.token);
       toast.success(res.data.message);
-      navigate("/");
+      navigate("/admin/profile");
     } catch (e) {
       toast.error(e.response.data.message);
     }
@@ -33,13 +36,11 @@ const Login = () => {
             </p>
           </div>
           <div class="space-y-4">
-            {/* phone number */}
+            {/* email */}
             <input
-              onChange={(e) =>
-                setInput({ ...input, phoneNumber: e.target.value })
-              }
-              type="number"
-              placeholder="Phone Number"
+              onChange={(e) => setInput({ ...input, email: e.target.value })}
+              type="text"
+              placeholder="email"
               class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md "
             />
             {/* skill*/}

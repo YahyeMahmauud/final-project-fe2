@@ -2,6 +2,7 @@ import "./App.css";
 import Navbar from "./Components/Navbar";
 import Home from "./Pages/Home";
 import Signup from "./Pages/Signup";
+import Profile from "./Pages/Profile";
 // import Footer from "./Components/Footer";
 import Login from "./Pages/Login";
 import Booking from "./Pages/Booking";
@@ -11,15 +12,17 @@ import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState, useEffect } from "react";
-import { UserContext } from "./Utils/UserContext";
-import Profile from "./Components/Profile";
+import { userContext } from "./Utils/userContext";
+// import jwt_decode from "jwt-decode";
 
 function App() {
   const [user, setUser] = useState(false);
   const [loading, setLoading] = useState(true);
+  // const [decoded, setDecoded] = useState("");
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
+      // setDecoded(jwt_decode(token));
       setUser(true);
     }
 
@@ -30,7 +33,7 @@ function App() {
 
   return (
     <>
-      <UserContext.Provider value={{ user, setUser }}>
+      <userContext.Provider value={{ user, setUser }}>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -38,8 +41,9 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/booking/:id" element={<Booking />} />
 
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/admin" element={<Protect />}></Route>
+          <Route path="/admin" element={<Protect />}>
+            <Route path="profile" element={<Profile />} />
+          </Route>
         </Routes>
         <ToastContainer
           position="top-right"
@@ -52,7 +56,7 @@ function App() {
           draggable
           pauseOnHover
         />
-      </UserContext.Provider>
+      </userContext.Provider>
     </>
   );
 }

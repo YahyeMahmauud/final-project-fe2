@@ -8,9 +8,13 @@ const Work = () => {
   return (
     <div className="flex flex-col items-center space-y-5 bg-white p-3">
       {/* wroks*/}
-      <div>
-        <h1 className=" font-bold text-1xl">How We Work </h1>
-      </div>
+      {/* <div>
+        {" "}
+        <h1 className="font-bold text-3xl ">
+          How We Work
+          <br />
+        </h1>
+      </div> */}
       {/* some text */}
 
       {/* Workers logos*/}
