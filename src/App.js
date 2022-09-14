@@ -13,6 +13,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState, useEffect } from "react";
 import { userContext } from "./Utils/userContext";
+import Specialists from "./Pages/Specialists";
 // import jwt_decode from "jwt-decode";
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/Specialists/:id" element={<Specialists />} />
           <Route path="/booking/:id" element={<Booking />} />
 
           <Route path="/admin" element={<Protect />}>

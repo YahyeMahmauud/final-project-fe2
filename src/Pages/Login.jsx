@@ -36,11 +36,13 @@ const Login = () => {
             </p>
           </div>
           <div class="space-y-4">
-            {/* email */}
+            {/* phoneNumber */}
             <input
-              onChange={(e) => setInput({ ...input, email: e.target.value })}
+              onChange={(e) =>
+                setInput({ ...input, phoneNumber: e.target.value })
+              }
               type="text"
-              placeholder="email"
+              placeholder="Phone Number"
               class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md "
             />
             {/* skill*/}

@@ -15,7 +15,7 @@ const Signup = () => {
     try {
       const formData = new FormData();
       formData.append("name", input.name);
-      formData.append("email", input.email);
+      formData.append("phoneNumber", input.phoneNumber);
       formData.append("password", input.password);
       formData.append("image", input.image);
       formData.append("specialty", input.specialty);
@@ -47,18 +47,20 @@ const Signup = () => {
             <input
               onChange={(e) => setInput({ ...input, name: e.target.value })}
               type="text"
-              placeholder="FullName"
+              placeholder="Full Name"
               class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md "
             />
             {/*  */}
-            {/* email */}
+            {/* phoneNumber */}
             <input
-              onChange={(e) => setInput({ ...input, email: e.target.value })}
-              type="text"
+              onChange={(e) =>
+                setInput({ ...input, phoneNumber: e.target.value })
+              }
+              type="number"
               id="phone"
               name="phone"
               required
-              placeholder="email"
+              placeholder="Phone Number"
               class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md"
             />
             {/* skill*/}

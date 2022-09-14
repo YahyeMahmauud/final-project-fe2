@@ -13,9 +13,13 @@ const Booking = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/service/${id}`).then((res) => {
-      // console.log(res.data.Service);
-      setInput({ ...input, service: res.data.Service._id });
+    axios.get(`http://localhost:8080/specialist/${id}`).then((res) => {
+      setItem(res.data.specialist);
+      setInput({
+        ...input,
+        specialist: res.data.specialist._id,
+        number: res.data.specialist.phoneNumber,
+      });
     });
     // console.log(item);
   }, []);
@@ -39,8 +43,7 @@ const Booking = () => {
               {item.name}
             </h1>
             <p class="w-80 text-center text-sm mb-8 font-semibold text-gray-700 tracking-wide cursor-pointer">
-              Book a {item.name} specialist to enjoy all the services without
-              any delay!
+              {item.name} is a pro {item.specialty} specialist. Book him Now!
             </p>
           </div>
           <div class=" flex gap-4 items-center">
