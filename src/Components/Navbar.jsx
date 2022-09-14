@@ -16,9 +16,9 @@ const Navbar = () => {
       const decoded = jwt_decode(token);
       axios
         .get(`http://localhost:8080/specialist/${decoded.data.id}`)
-        .then((res) => setImage(res.data.specialist.image));
+        .then((res) => setImage(res.data.specialist));
     }
-  });
+  }, []);
 
   return (
     <div className="bg-white shadow-md h-20 flex justify-between items-center p-8 cursor-pointer">
@@ -49,9 +49,9 @@ const Navbar = () => {
             </Link>
           </div>
         ) : (
-          <Link to="/admin/profile">
+          <Link to={`/admin/profile/${image._id}`}>
             <img
-              src={`http://localhost:8080/${image}`}
+              src={`http://localhost:8080/${image.image}`}
               alt="profile"
               className="h-14 rounded-full w-14"
             />
