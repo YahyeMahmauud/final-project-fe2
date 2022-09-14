@@ -50,7 +50,7 @@ const Home = () => {
 
           {/* button */}
           <div className=" flex gap-16">
-            {/* <button
+            <button
               type="button"
               className=" p-2 border-2 border-blue-500 text-xl font-medium rounded-md  hover:bg-blue-500"
             >
@@ -62,7 +62,7 @@ const Home = () => {
               className="p-3  bg-blue-500 text-xl font-medium rounded-md hover:bg-white border-2 border-white  "
             >
               How we work
-            </button> */}
+            </button>
           </div>
         </div>
 

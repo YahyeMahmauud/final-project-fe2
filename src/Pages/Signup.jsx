@@ -14,7 +14,7 @@ const Signup = () => {
       const res = await axios.post(`${baseUrl}/specialist`, input);
       localStorage.setItem("token", res.data.token);
       toast.success(res.data.message);
-      navigate("/");
+      navigate("/profile");
     } catch (e) {
       toast.error(e.response.data.message);
     }
