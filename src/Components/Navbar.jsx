@@ -18,7 +18,7 @@ const Navbar = () => {
         .get(`http://localhost:8080/specialist/${decoded.data.id}`)
         .then((res) => setImage(res.data.specialist.image));
     }
-  }, []);
+  });
 
   return (
     <div className="bg-white shadow-md h-20 flex justify-between items-center p-8 cursor-pointer">
