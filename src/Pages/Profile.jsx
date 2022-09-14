@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from "react";
-import myImage from "../images/myPicture.jpg";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect, useContext } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { userContext } from "../Utils/userContext";
 
 const Profile = () => {
   const { id } = useParams();
   const [specialist, setSpecialist] = useState("");
+  const { setUser } = useContext(userContext);
+  const navigate = useNavigate();
+  // const [jobs, setJobs] = useState({});
 
   useEffect(() => {
     axios
@@ -13,12 +16,15 @@ const Profile = () => {
       .then((res) => setSpecialist(res.data.specialist));
   }, []);
 
-  const jobs = specialist.jobs;
-  console.log(jobs);
-
   if (specialist === "") {
-    return <h1>loading ...</h1>;
+    return <h1>loading</h1>;
   }
+
+  const handleOnLogout = async () => {
+    localStorage.removeItem("token");
+    setUser(false);
+    navigate("/login");
+  };
 
   return (
     <div className="">
@@ -43,6 +49,10 @@ const Profile = () => {
 
               <ul class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
                 <li class="flex items-center py-3">
+                  <span>Specialty</span>
+                  <span class="ml-auto">{specialist.specialty}</span>
+                </li>
+                <li class="flex items-center py-3">
                   <span>Status</span>
                   <span class="ml-auto">
                     <span class="bg-green-500 py-1 px-2 rounded text-white text-sm">
@@ -51,8 +61,12 @@ const Profile = () => {
                   </span>
                 </li>
                 <li class="flex items-center py-3">
-                  <span>Specialty</span>
-                  <span class="ml-auto">{specialist.specialty}</span>
+                  <button
+                    onClick={handleOnLogout}
+                    class="bg-red-500 py-1 px-2 mx-auto rounded text-white text-sm"
+                  >
+                    Log out
+                  </button>
                 </li>
               </ul>
             </div>
@@ -115,73 +129,21 @@ const Profile = () => {
                         />
                       </svg>
                     </span>
-                    <span class="tracking-wide">Jobs</span>
+                    <span class="tracking-wide">Jobs history</span>
                   </div>
                   <ul class="list-inside space-y-2">
-                    {jobs.map((job) => {
+                    {specialist.jobs.map((job) => (
                       <li>
                         <div class="text-teal-600">
-                          Owner at Her Company Inc.
+                          {`${job.name}, ${job.address}`}
                         </div>
-                        <div class="text-gray-500 text-xs">
-                          March 2020 - Now
-                        </div>
-                      </li>;
-                    })}
-                    {/* <li>
-                      <div class="text-teal-600">Owner at Her Company Inc.</div>
-                      <div class="text-gray-500 text-xs">March 2020 - Now</div>
-                    </li>
-                    <li>
-                      <div class="text-teal-600">Owner at Her Company Inc.</div>
-                      <div class="text-gray-500 text-xs">March 2020 - Now</div>
-                    </li>
-                    <li>
-                      <div class="text-teal-600">Owner at Her Company Inc.</div>
-                      <div class="text-gray-500 text-xs">March 2020 - Now</div>
-                    </li>
-                    <li>
-                      <div class="text-teal-600">Owner at Her Company Inc.</div>
-                      <div class="text-gray-500 text-xs">March 2020 - Now</div>
-                    </li> */}
+                        <div class="text-gray-500 text-xs">{job.date}</div>
+                      </li>
+                    ))}
                   </ul>
                 </div>
                 <div>
-                  <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
-                    <span clas="text-green-500">
-                      <svg
-                        class="h-5"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path fill="#fff" d="M12 14l9-5-9-5-9 5 9 5z" />
-                        <path
-                          fill="#fff"
-                          d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
-                        />
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-                        />
-                      </svg>
-                    </span>
-                    {/* Job history */}
-                    <span class="tracking-wide">Job history</span>
-                  </div>
-                  <ul class="list-inside space-y-2">
-                    <li>
-                      <div class="text-teal-600">Masters Degree in Oxford</div>
-                      <div class="text-gray-500 text-xs">March 2020 - Now</div>
-                    </li>
-                    <li>
-                      <div class="text-teal-600">Bachelors Degreen in LPU</div>
-                      <div class="text-gray-500 text-xs">March 2020 - Now</div>
-                    </li>
-                  </ul>
+                  <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3"></div>
                 </div>
               </div>
             </div>

@@ -24,7 +24,7 @@ const Signup = () => {
       setUser(true);
       localStorage.setItem("token", res.data.token);
       toast.success(res.data.message);
-      navigate("/admin/profile");
+      navigate(`/admin/profile/${res.data.specialist._id}`);
     } catch (e) {
       toast.error(e.response.data.message);
     }
