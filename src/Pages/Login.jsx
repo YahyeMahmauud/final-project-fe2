@@ -14,10 +14,10 @@ const Login = () => {
   const handleOnLogin = async () => {
     try {
       const res = await axios.post(`${baseUrl}/specialist/login`, input);
-      setUser(true);
       localStorage.setItem("token", res.data.token);
+      setUser(true);
       toast.success(res.data.message);
-      navigate("/admin/profile");
+      navigate(`/admin/profile/${res.data.specialist._id}`);
     } catch (e) {
       toast.error(e.response.data.message);
     }
