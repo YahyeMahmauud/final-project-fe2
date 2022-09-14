@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 function Services({ service }) {
   // console.log(`http://localhost:8080/${service.image}`);
+
   return (
     <>
       <div class="flex h-full items-center   px-2 ml-10  w-screen  justify-center ">

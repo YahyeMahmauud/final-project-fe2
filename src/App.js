@@ -44,7 +44,7 @@ function App() {
           <Route path="/booking/:id" element={<Booking />} />
 
           <Route path="/admin" element={<Protect />}>
-            <Route path="profile" element={<Profile />} />
+            <Route path="profile/:id" element={<Profile />} />
           </Route>
         </Routes>
         <ToastContainer

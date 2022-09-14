@@ -71,9 +71,9 @@ const Home = () => {
         <div className="flex-end w-[400px]">
           <img src={worker} alt="worker" className="w-300px" />
         </div>
-        {/* services */}
       </div>
 
+      {/* services */}
       <div>
         <div className="flex items-center justify-center p-2 mt-2">
           <h1 className="font-bold text-3xl ">

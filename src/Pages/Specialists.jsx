@@ -13,13 +13,31 @@ export default function Specialists() {
       setSpecialists(res.data.Service.specialists);
     });
   }, []);
-  console.log(specialists);
 
   return (
-    <div className="flex p-8  items-center ">
-      {specialists.map((value) => (
-        <SpecialistCard specialist={value} />
-      ))}
+    <div>
+      <div className="flex items-center justify-center p-2 mt-2">
+        <h1 className="font-bold text-xl ">
+          Here are all all the specialists for this service:
+          <br />
+        </h1>
+      </div>
+      <div className="flex p-8  items-center  ">
+        {specialists.map((value) => (
+          <SpecialistCard specialist={value} />
+        ))}
+      </div>
     </div>
+    // <div className="flex p-2  items-center ">
+    //   <div>
+    //     <h1 className="font-bold text-3xl ">
+    //       {`Here are all all the ${service} specialists`}
+    //       <br />
+    //     </h1>
+    //   </div>
+    //   {specialists.map((value) => (
+    //     <SpecialistCard specialist={value} />
+    //   ))}
+    // </div>
   );
 }

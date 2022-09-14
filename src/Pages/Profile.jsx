@@ -1,7 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import myImage from "../images/myPicture.jpg";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 const Profile = () => {
+  const { id } = useParams();
+  const [specialist, setSpecialist] = useState("");
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8080/specialist/${id}`)
+      .then((res) => setSpecialist(res.data.specialist));
+  }, []);
+
+  const jobs = specialist.jobs;
+  console.log(jobs);
+
+  if (specialist === "") {
+    return <h1>loading ...</h1>;
+  }
+
   return (
     <div className="">
       <div class="bg-gray-100">
@@ -13,17 +31,16 @@ const Profile = () => {
           <div class="w-full md:w-3/12 md:mx-2">
             <div class="bg-white p-3 border-t-4 border-blue-400">
               <div class="image overflow-hidden">
-                <img class="h-[300px] w-full mx-auto" src={myImage} alt="" />
+                <img
+                  class="h-[300px] w-full mx-auto"
+                  src={`http://localhost:8080/${specialist.image}`}
+                  alt=""
+                />
               </div>
               <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">
-                Yahye Mahamuud
+                {specialist.name}
               </h1>
 
-              <p class="text-sm text-gray-500 hover:text-gray-600 leading-6">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Reprehenderit, eligendi dolorum sequi illum qui unde aspernatur
-                non deserunt
-              </p>
               <ul class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
                 <li class="flex items-center py-3">
                   <span>Status</span>
@@ -34,8 +51,8 @@ const Profile = () => {
                   </span>
                 </li>
                 <li class="flex items-center py-3">
-                  <span>Member since</span>
-                  <span class="ml-auto">Nov 07, 2016</span>
+                  <span>Specialty</span>
+                  <span class="ml-auto">{specialist.specialty}</span>
                 </li>
               </ul>
             </div>
@@ -65,28 +82,14 @@ const Profile = () => {
                 <span class="tracking-wide">About</span>
               </div>
               <div class="text-gray-700">
-                <div class="grid md:grid-cols-2 text-sm">
-                  <div class="grid grid-cols-2">
-                    <div class="px-4 py-2 font-semibold">First Name</div>
-                    <div class="px-4 py-2">Yahye</div>
-                  </div>
-                  <div class="grid grid-cols-2">
-                    <div class="px-4 py-2 font-semibold">Last Name</div>
-                    <div class="px-4 py-2">Mahamuud</div>
-                  </div>
-
-                  <div class="grid grid-cols-2">
-                    <div class="px-4 py-2 font-semibold">Phone Number</div>
-                    <div class="px-4 py-2">4757542</div>
-                  </div>
-                  <div class="grid grid-cols-2">
-                    <div class="px-4 py-2 font-semibold">Permanant Address</div>
-                    <div class="px-4 py-2">Arlington Heights, IL, Illinois</div>
-                  </div>
-                </div>
+                <p class="text-sm text-gray-500 hover:text-gray-600 leading-6">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Reprehenderit, eligendi dolorum sequi illum qui unde
+                  aspernatur non deserunt
+                </p>
               </div>
               <button class="block w-full text-blue-400 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
-                Edit my Information
+                Edit my About
               </button>
             </div>
 
@@ -115,7 +118,17 @@ const Profile = () => {
                     <span class="tracking-wide">Jobs</span>
                   </div>
                   <ul class="list-inside space-y-2">
-                    <li>
+                    {jobs.map((job) => {
+                      <li>
+                        <div class="text-teal-600">
+                          Owner at Her Company Inc.
+                        </div>
+                        <div class="text-gray-500 text-xs">
+                          March 2020 - Now
+                        </div>
+                      </li>;
+                    })}
+                    {/* <li>
                       <div class="text-teal-600">Owner at Her Company Inc.</div>
                       <div class="text-gray-500 text-xs">March 2020 - Now</div>
                     </li>
@@ -130,7 +143,7 @@ const Profile = () => {
                     <li>
                       <div class="text-teal-600">Owner at Her Company Inc.</div>
                       <div class="text-gray-500 text-xs">March 2020 - Now</div>
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
                 <div>
